@@ -1,0 +1,184 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+
+<title> Crop Recommendation - Home</title>
+{% endblock %}
+
+{% block bodycontent %}
+
+<h2 style="text-align: center; margin: 0px; color: black">
+  <b>Find out the most suitable crop to grow in your farm !</b>
+</h2>
+<br />
+<!--Form Section-->
+
+
+<div class="container">
+  <form method="POST" action="{{ url_for('predict')}}" onsubmit="return validateForm()">
+    <div class="form-group">
+      <label for="Nitrogen" ><b>Nitrogen (N)</b></label>
+      <input
+        type="text"
+        class="form-control"
+        id="Nitrogen"
+        name="nitrogen"
+        placeholder="Enter the value"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="Phosphorous"  ><b>Phosphorous (P)</b></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="Phosphorous"
+        name="phosphorous"
+        placeholder="Enter the value"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="Pottasium" ><b>Pottasium (K)</b></label>
+      <input
+        type="text"
+        class="form-control"
+        id="Pottasium"
+        name="pottasium"
+        placeholder="Enter the value"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="ph"><b>Temperature (in &deg;C)</b></label>
+      <input
+        type="text"
+        class="form-control"
+        id="Temperature"
+        name="temperature"
+        placeholder="Enter the value"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="Rainfall" ><b>Humidity (in %)</b></label>
+      <input
+        type="text"
+        class="form-control"
+        id="Humidity"
+        name="humidity"
+        placeholder="Enter the value"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="ph"><b>ph level</b></label>
+      <input
+        type="text"
+        class="form-control"
+        id="ph"
+        name="ph"
+        placeholder="Enter the value"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="Rainfall" ><b>Rainfall (in mm)</b></label>
+      <input
+        type="text"
+        class="form-control"
+        id="Rainfall"
+        name="rainfall"
+        placeholder="Enter the value"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+
+    <div class="d-flex justify-content-center form-group" style="margin: 10% auto;  float: right;  ">
+      <button
+        
+        type="submit"
+        class="btn btn-info form-control hov"
+        
+        style="color: black; margin: 0 auto; font-weight: bold; width: 25rem; height:50px; border-radius:12px; font-size: 21px;">
+        Predict
+      </button>
+    </div>
+  </form>
+</div>
+
+
+
+
+<script>
+function validateForm() {
+    let Nitrogen = document.getElementById("Nitrogen").value;
+    let Phosphorous = document.getElementById("Phosphorous").value;
+    let Pottasium = document.getElementById("Pottasium").value;
+    let Temperature = document.getElementById("Temperature").value;
+    let Humidity = document.getElementById("Humidity").value;
+    let ph = document.getElementById("ph").value;
+    let Rainfall = document.getElementById("Rainfall").value;
+
+    let on = 1;
+
+    let vars = new Array([Nitrogen ,Phosphorous ,Pottasium ,Temperature ,Humidity ,ph , Rainfall ]);
+    console.log(vars);
+ 
+
+    for (const val of vars){
+      if(val < 0){
+        alert("Value cannot be negative !");
+      return false;
+      }
+    }
+
+    if (Nitrogen > 150) {
+      alert("Too high Nitrogen value !\n Please Enter the value between 0 to 150");
+      return false;
+    }
+    if (Phosphorous > 150) {
+      alert("Too high value for Phosphorous !\n Please Enter the value between 0 to 150");
+      return false;
+    }
+    if (Pottasium > 210) {
+      alert("Too high value for Pottasium !\n Please Enter the value between 0 to 210");
+      return false;
+    }
+
+    if (Temperature > 50) {
+      alert("Too high value for Temperature !\n Please Enter the value between 0 to 50");
+      return false;
+    }
+    
+    if (Humidity > 100) {
+      alert("Too high value for Humidity !\n Please Enter the value between 0 to 100");
+      return false;
+    }
+    if (ph > 10) {
+      alert("Too high value for ph !\n Please Enter the value between 0 to 10");
+      return false;
+    }
+    if (Rainfall > 300) {
+      alert("Too high value for Rainfall !\n Please Enter the value between 0 to 300");
+      return false;
+    }
+    
+  }
+
+
+</script>
+
+
+<!-- Form section -->
+
+{% endblock %}
