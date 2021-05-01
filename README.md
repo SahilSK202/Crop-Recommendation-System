@@ -34,7 +34,7 @@ This dataset was build by augmenting datasets of rainfall, climate and fertilize
 
  
 # Demo
-Live Demo: https://grow-precise.herokuapp.com/
+## Live Demo: https://grow-precise.herokuapp.com/
 
 ![](https://github.com/SahilSK202/Crop-Recommendation-System/blob/main/static/app1.png)
 ![](https://github.com/SahilSK202/Crop-Recommendation-System/blob/main/static/app2.png)
